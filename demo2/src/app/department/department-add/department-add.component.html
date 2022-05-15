@@ -1,8 +1,18 @@
-<input type="text" [(ngModel)]="ndept._id">
-<input type="text" [(ngModel)]="ndept.name">
-<select [(ngModel)]="ndept.location">
+<br>
+<label title="ID">ID: </label>
+<input type="text" [(ngModel)]="ndept._id" name="id" #uid="ngModel" required>
+<span *ngIf="uid.invalid">*</span><br><br>
+<label title="NAME">NAME: </label>
+<input type="text" [(ngModel)]="ndept.name" name="name" #uname="ngModel" required
+minlength="3 ">
+<span *ngIf="uname.errors?.['required']&&uname.touched">name is required </span>
+<span *ngIf="uname.errors?.['minlength']&&uname.touched">min name is 3</span><br><br>
+<label title="LOCATION">Location: </label>
+<select [(ngModel)]="ndept.location" name="location" #ulocation="ngModel" required>
     <option>Alexandria</option>
     <option>Tanta</option>
     <option>Banha</option>
-</select>
+</select><br>
+<span *ngIf="ulocation.errors?.['required']&&ulocation.touched">location required </span><br>
+<br>
 <button (click)="save()">Save</button>

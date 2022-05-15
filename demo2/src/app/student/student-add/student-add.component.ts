@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { StudentService } from 'src/app/student.service';
 import { Student } from 'src/app/_models/student';
 
@@ -13,8 +14,10 @@ export class StudentAddComponent implements OnInit {
   
   save(){
     this.stdSer.AddStudent(this.nstd);
+    this.router.navigateByUrl("/students");
+    
     }
-  constructor(public stdSer:StudentService) { }
+  constructor(public stdSer:StudentService,public router:Router) { }
 
   ngOnInit(): void {
   }

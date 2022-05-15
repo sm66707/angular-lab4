@@ -1,10 +1,14 @@
-<app-student-add></app-student-add>
+<br>
+<a routerLink="students/add">Add students</a>
+<button (click)="showAdd()">show Add</button>
+
 <table class="table">
  <thead>
      <tr>
          <th>Id</th>
          <th>Name</th>
          <th>Grade</th>
+         <th>Operations</th>
      </tr>
  </thead>
  <tbody>
@@ -12,6 +16,9 @@
          <td>{{item._id}}</td>
          <td>{{item.name}}</td>
          <td>{{item.grade}}</td>
+         <td>
+            <a [routerLink]="['/students/details',item._id]">Details</a>
+        </td>
 
      </tr>
  </tbody>

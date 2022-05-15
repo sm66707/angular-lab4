@@ -1,10 +1,13 @@
-<app-department-add></app-department-add>
+<br>
+<a routerLink="departments/add">AddDepartment</a> 
+<button (click)="showAdd()">show Add</button>
 <table class="table">
  <thead>
      <tr>
          <th>Id</th>
          <th>Name</th>
          <th>Location</th>
+         <th>Operations</th>
      </tr>
  </thead>
  <tbody>
@@ -12,6 +15,9 @@
          <td>{{item._id}}</td>
          <td>{{item.name}}</td>
          <td>{{item.location}}</td>
+         <td>
+             <a [routerLink]="['/departments/details',item._id]">Details</a>
+         </td>
 
      </tr>
  </tbody>

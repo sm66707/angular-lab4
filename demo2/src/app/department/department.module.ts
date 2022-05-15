@@ -4,17 +4,23 @@ import { DepartmentListComponent } from './department-list/department-list.compo
 import { DepartmentAddComponent } from './department-add/department-add.component';
 import { DepartmentDetailsComponent } from './department-details/department-details.component';
 import { FormsModule } from '@angular/forms';
-
-
-
+import { RouterModule,Routes } from '@angular/router';
+import { DepartmentEditComponent } from './department-edit/department-edit.component';
+const routes:Routes=[
+  {path:"",component:DepartmentListComponent},
+  {path:"add",component:DepartmentAddComponent},
+  {path:"details/:id",component:DepartmentDetailsComponent},
+  {path:"edit/:id",component:DepartmentEditComponent}
+];
 @NgModule({
   declarations: [
     DepartmentListComponent,
     DepartmentAddComponent,
-    DepartmentDetailsComponent
+    DepartmentDetailsComponent,
+    DepartmentEditComponent
   ],
   imports: [
-    CommonModule,FormsModule
+    CommonModule,FormsModule,RouterModule.forChild(routes)
   ],
   exports:[
     DepartmentListComponent,

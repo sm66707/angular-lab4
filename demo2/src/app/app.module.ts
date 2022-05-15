@@ -7,15 +7,28 @@ import { AppComponent } from './app.component';
 import { DepartmentService } from './department.service';
 import { DepartmentModule } from './department/department.module';
 import { StudentModule } from './student/student.module';
+import { HomeComponent } from './home/home.component';
+import { ContactusComponent } from './contactus/contactus.component';
+import { AboutComponent } from './about/about.component';
+import { CoreModule } from './core/core.module';
+import { NotfoundComponent } from './notfound/notfound.component';
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    HomeComponent,
+    ContactusComponent,
+    AboutComponent,
+    NotfoundComponent,
+    LoginComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,DepartmentModule,FormsModule,StudentModule
+    AppRoutingModule,FormsModule,StudentModule,CoreModule
   ],
   providers: [],
   bootstrap: [AppComponent]
