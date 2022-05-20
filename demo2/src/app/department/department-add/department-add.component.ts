@@ -13,8 +13,11 @@ export class DepartmentAddComponent implements OnInit {
   ndept:Department=new Department(0,"","");
   
   save(){
-    this.deptSer.AddDepartment(this.ndept);
-    this.router.navigateByUrl("/departments");
+    this.deptSer.AddDepartment(this.ndept).subscribe(
+      a=>{
+        this.router.navigateByUrl("/departments");
+      }
+    )
     }
   constructor(public deptSer:DepartmentService,public router:Router) { }
 

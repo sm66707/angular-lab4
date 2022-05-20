@@ -16,8 +16,10 @@
          <td>{{item.name}}</td>
          <td>{{item.location}}</td>
          <td>
-             <a [routerLink]="['/departments/details',item._id]">Details</a>
-         </td>
+            <a class="btn btn-info" [routerLink]="['/departments/details/',item._id]">View</a>
+            <a class="btn btn-primary" [routerLink]="['/departments/edit/',item._id]">Edit</a>
+            <button class="btn btn-danger"  (click)="deleteDepartment(item._id)">Delete</button>
+        </td>
 
      </tr>
  </tbody>

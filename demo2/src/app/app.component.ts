@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { DepartmentService } from './department.service';
 
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -8,4 +9,8 @@ import { DepartmentService } from './department.service';
 })
 export class AppComponent {
   title = 'demo2';
+  constructor(public deptser:DepartmentService){
+    
+  }
+ 
 }

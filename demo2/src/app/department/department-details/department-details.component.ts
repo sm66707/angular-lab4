@@ -10,12 +10,15 @@ import { Department } from 'src/app/_models/department';
 })
 export class DepartmentDetailsComponent implements OnInit {
   id=0;
-  dept:Department|null=new Department(0,"","");
+  department:Department|null=new Department(0,"","");
   constructor(public ac:ActivatedRoute,public deptSer:DepartmentService) { }
 
   ngOnInit(): void {
-    this.dept=this.deptSer.getDepartment(this.ac.snapshot.params['id']);
-    this.id=this.ac.snapshot.params['id']; 
+    this.ac.params.subscribe(data => {
+      this.deptSer.getDepartment(data['id']).subscribe(dept => {
+        this.department = dept;
+      });
+    });
   }
 
 }

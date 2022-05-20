@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Department } from './_models/department';
 
@@ -5,23 +6,25 @@ import { Department } from './_models/department';
   providedIn: 'root'
 })
 export class DepartmentService {
-  private depts:Department[]=[
-    new Department(100,"sd","alex"),
-    new Department(200,"os","tanta"),
-    new Department(300,"ai","cairo"),
-  ];
+  depts:Department[]=[];
+  private url:string="http://localhost:8080/departments/"
   getAllDepartments(){
-    return this.depts;
+    return this.http.get<Department[]>(this.url);
   }
   AddDepartment(dept:Department){
-    this.depts.push(new Department(dept._id,dept.name,dept.location));
+    return this.http.post<Department>(this.url,dept);
+
+  }
+  editDepartment(dept: Department, id: number) {
+    
+    return this.http.put<Department>(this.url + id, dept);
   }
   getDepartment(id:number){
-     for(let i=0;i<this.depts.length;i++){
-       if(this.depts[i]._id==id)
-       return this.depts[i];
-     }
-     return null;
+    return this.http.get<Department>(this.url + id);
   }
-  constructor() { }
+  deleteDepartment(id: number) {
+    return this.http.delete<Department>(this.url + id);
+  }
+ 
+  constructor(public http:HttpClient) { }
 }

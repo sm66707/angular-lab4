@@ -1,1 +1,24 @@
-<p>department-edit works!</p>
+<form #signup="ngForm" (ngSubmit)="editDepartment()" *ngIf="department != null">
+    <div>
+        <label>ID</label>
+        <input type="number"  [(ngModel)]="department._id" name="department-id" #id="ngModel" required>
+        <small id="" *ngIf="id.invalid && id.touched">ID is Required</small>
+    </div>
+    <div >
+        <label>Name</label>
+        <input type="text"  [(ngModel)]="department.name" name="department-name" #name="ngModel" minlength="2" required>
+        <small id=""  *ngIf="name.errors?.['required'] && name.touched">Department Name is Required</small>
+        <small id=""  *ngIf="name.errors?.['minlength'] && name.touched">Department Name Min length '2'</small>
+    </div>
+    <div >
+        <label>Location</label>
+        <select  [(ngModel)]="department.location" name="department-location" #location="ngModel" required>
+            <option selected hidden>{{department.location}}</option>
+            <option>Smart</option>
+            <option>Alex</option>
+            <option>Mansoura</option>
+        </select>
+        <small id=""  *ngIf="location.errors?.['required'] && location.touched"> Location is Required</small>
+    </div>
+    <input type="submit" value="Edit"  [disabled]="signup.invalid ">
+</form>
